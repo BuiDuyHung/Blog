@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
@@ -12,8 +14,9 @@ class CategoryController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    {   
+        $categories = Category::all();
+        return view('layouts.category.index', compact('categories'));
     }
 
     /**
@@ -21,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.category.create');
     }
 
     /**
@@ -29,7 +32,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->title = $request->title;
+        $category->save();
+
+        return redirect()->route('category.index')->with('msg', 'Thêm danh mục bài viết thành công');
     }
 
     /**
@@ -45,7 +52,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $category = Category::find($category->id);
+
+        return view('layouts.category.edit', compact('category'));
     }
 
     /**
@@ -53,7 +62,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $foundCategory = Category::find($category->id);
+        if ($foundCategory) {
+            $foundCategory->title = $request->title;
+            $foundCategory->update();
+        }
+
+        return redirect()->route('category.index')->with('msg', 'Cập nhật danh mục bài viết thành công');
     }
 
     /**
@@ -61,6 +76,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $foundCategory = Category::find($category->id);
+
+        if ($foundCategory) {
+            $foundCategory->delete();
+        }
+
+        return redirect()->back()->with('msg', 'Xóa danh mục bài viết thành công');
     }
 }

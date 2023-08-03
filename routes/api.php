@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\v1\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\CustomerController;
@@ -24,6 +25,8 @@ Route::resource('/', HomeController::class);
 
 Route::prefix('v1')->group(function(){
     Route::resource('customer', CustomerController::class)->only(['index', 'show', 'store', 'update', 'delete']);
+
+    Route::resource('category', CategoryController::class);
 
 });
 
