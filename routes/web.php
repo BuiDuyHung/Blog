@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,4 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [HomeController::class, 'index'])->name('main');
 
+Route::get('/detail/{id}', [PostController::class, 'show'])->name('detail');
+
+
+//Auth
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\LoginController::class, 'index'])->name('home');
