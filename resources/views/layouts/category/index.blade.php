@@ -20,10 +20,10 @@
                         <table class="table table-bordered">
                             <thead>
                               <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Tiêu đề</th>
-                                <th scope="col">Sửa</th>
-                                <th scope="col">Xóa</th>
+                                <th scope="col" class="text-center">#</th>
+                                <th scope="col" class="text-center">Tiêu đề</th>
+                                <th scope="col" class="text-center">Sửa</th>
+                                <th scope="col" class="text-center">Xóa</th>
                                 
                               </tr>
                             </thead>
@@ -31,12 +31,12 @@
                              
                                 @foreach ($categories as $item)
                                     <tr>
-                                        <th scope="row"> {{$item->id}} </th>
-                                        <td> {{$item->title}} </td>
-                                        <td>
+                                        <td scope="row" class="text-center"> {{$item->id}} </td>
+                                        <td class="text-center"> {{$item->title}} </td>
+                                        <td class="text-center">
                                             <a href="{{route('category.edit', $item->id)}}" class="btn btn-warning btn-sm">Sửa</a>
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <form action="{{route('category.destroy', $item->id)}}" method="POST">
                                                 <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
                                                 @csrf
