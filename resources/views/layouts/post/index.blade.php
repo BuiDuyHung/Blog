@@ -39,7 +39,7 @@
                                         <td class="text-center"> 
                                             <img src=" {{asset('uploads/'.$item->image)}} " alt="{{ $item->title }}" width="200px">
                                         </td>
-                                        <td class="text-center"> {!!$item->short_desc!!} </td>
+                                        <td class="text-center"> {!!substr($item->short_desc,0,100)!!} </td>
                                         <td class="text-center"> {{$item->category->title}} </td>
 
                                         <td class="text-center">

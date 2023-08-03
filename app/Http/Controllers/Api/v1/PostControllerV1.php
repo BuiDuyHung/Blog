@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Post;
 use App\Models\Category;
+use App\Models\Post;
 
-class HomeController extends Controller
+class PostControllerV1 extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('pages.main', compact('categories'));
+        //
     }
 
     /**
@@ -38,7 +38,8 @@ class HomeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $categories = Category::all();
+        return view('pages.detail', compact('categories'));
     }
 
     /**

@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Thêm danh bài viết
+                    Thêm bài viết
                 </div>
 
                 <div class="card-body">

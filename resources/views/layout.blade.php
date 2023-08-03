@@ -47,9 +47,9 @@
 				 <span class="menu"></span> 
 					<ul class="navig">
 						<li><a href="{{route('main')}}"  class="active">Trang chủ</a></li>
-						<li><a href="#">Về chúng tôi</a></li>
-						<li><a href="gallery.html">Tin tức</a></li>
-						
+						@foreach ($categories as $category)
+							<li><a href="{{ route('danh-muc.show', ['danh_muc' => $category->id, 'slug' => Str::slug($category->title)]) }}">{{ $category->title }}</a></li>
+						@endforeach
 					</ul>
 			</div>
 			<div class="header-right">

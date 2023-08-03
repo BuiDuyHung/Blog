@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
+use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class CategoryControllerV1 extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,9 +37,10 @@ class PostController extends Controller
      * Display the specified resource.
      */
     public function show($id)
-    {
-        $id = 1;
-        return view('pages.detail', compact('id'));
+    {   
+        $posts = Post::with('category')->where('category_id', $id)->get();
+        $categories = Category::all();
+        return view('pages.category', compact('categories', 'posts'));
     }
 
     /**

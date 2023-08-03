@@ -64,17 +64,35 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit($postId)
     {
-        //
+        $post = Post::find($postId);
+        $categories = Category::all();
+
+        return view('layouts.post.edit', compact('categories', 'post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $postId)
     {
-        //
+        $post = Post::find($postId);
+        $post->title = $request->title;
+        $post->short_desc = $request->short_desc;
+        $post->desc = $request->desc;
+        $post->category_id = $request->category_id;
+        if($request->image){
+            unlink('uploads/'.$post->image);
+            $image = $request->image;
+            $ext = $image->getClientOriginalExtension();
+            $name = time().'_'.$image->getClientOriginalName();
+            Storage::disk('public')->put($name, File::get($image));
+            $post->image = $name;
+        }
+        $post->save();
+
+        return redirect()->route('post.index')->with('msg', 'Cập nhật bài viết thành công');
     }
 
     /**
