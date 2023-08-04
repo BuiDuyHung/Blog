@@ -9,15 +9,17 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Pagination\Paginator;
 
 class PostController extends Controller
-{
+{   
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $posts = Post::with('category')->orderBy('id', 'desc')->get();
+        Paginator::useBootstrap();
+        $posts = Post::with('category')->orderBy('id', 'desc')->paginate(5);
         return view('layouts.post.index', compact('posts'));
     }
 

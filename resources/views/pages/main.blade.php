@@ -23,11 +23,17 @@
                                     <a href="{{ route('bai-viet.show', ['bai_viet' => $post->id]) }}">Đọc tiếp...</a>
                                 </div>
                             </div>
+
                             <div class="clearfix"></div>
                         @endforeach
                     </div>
+                    <div class="mt-3">
+                        {{ $posts->links() }}
+                    </div>
                 </div>	
             </div>
+            
+
             <div class="col-md-4 about-right heading">
                 
                 <div class="abt-2">
@@ -57,11 +63,11 @@
                     </ul>	
                 </div>
                 <div class="abt-2">
-                    <h3>NEWS LETTER</h3>
+                    <h3>Gửi Thư</h3>
                     <div class="news">
                         <form>
                             <input type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" />
-                            <input type="submit" value="Đăng ký">
+                            <input type="submit" value="Gửi">
                         </form>
                     </div>
                 </div>

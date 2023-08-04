@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Pagination\Paginator;
 
 class HomeController extends Controller
 {
@@ -26,10 +27,13 @@ class HomeController extends Controller
 
     public function index()
     {
-        $posts = Post::with('category')->get();
+        Paginator::useBootstrap();
+        $posts = Post::inRandomOrder()->paginate(5);
+
         $news = Post::inRandomOrder()->limit(5)->get();
         $views = Post::orderBy('views', 'DESC')->limit(5)->get();
         $categories = Category::all();
+
         return view('pages.main', compact('categories', 'posts', 'news', 'views'));
     }
 

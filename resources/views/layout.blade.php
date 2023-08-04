@@ -37,7 +37,7 @@
 	<div class="header-top">
 		<div class="container">
 			<div class="head-main">
-				<a href="index.html"><img src="{{asset('images/logo-2.png')}}" alt="" /></a>
+				<a href="{{route('main')}}"><img src="{{asset('images/logo-2.png')}}" alt="" /></a>
 			</div>
 		</div>
 	</div>

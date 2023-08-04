@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class CategoryControllerV1 extends Controller
 {
@@ -38,7 +39,8 @@ class CategoryControllerV1 extends Controller
      */
     public function show($id)
     {   
-        $posts = Post::with('category')->where('category_id', $id)->get();
+        Paginator::useBootstrap();
+        $posts = Post::with('category')->where('category_id', $id)->paginate(3);
         $categories = Category::all();
         $title_category = Category::find($id);
         $views_category = Post::with('category')->orderBy('views', 'DESC')->where('category_id', $id)->limit(5)->get();
