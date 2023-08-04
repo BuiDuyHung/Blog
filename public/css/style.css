@@ -178,17 +178,15 @@ ul.navig li a.active{
     font-family: 'Raleway-Regular';
 }
 .search-bar input[type="submit"] {
-    background: url(../images/search.png)no-repeat 0px 0px;
     outline: none;
     -webkit-appearance: none;
     border: 0;
     display: inline-block;
+	font-size: 15px;
     vertical-align: -webkit-baseline-middle;
     position: absolute;
-    width: 24px;
-    height: 24px;
     top: 7px;
-    right: 1%;
+    right: 5px;
 }
 .header-right ul {
     padding: 0;

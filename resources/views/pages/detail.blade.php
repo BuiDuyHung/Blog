@@ -9,7 +9,7 @@
               <h1> {{$post->title}} </h1>	
               <ul class="blog-ic">
                 <li><a href="#"><span> <i  class="glyphicon glyphicon-user"> </i>Admin</span> </a> </li>
-                  <li><span><i class="glyphicon glyphicon-time"> </i>June 14, 2013</span></li>		  						 	
+                  <li><span><i class="glyphicon glyphicon-time"> </i>{{$post->post_date}}</span></li>		  						 	
                   <li><span><i class="glyphicon glyphicon-eye-open"> </i>Views: {{$post->views}} </span></li>
               </ul>
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -40,15 +41,17 @@ class PostController extends Controller
         $post->short_desc = $request->short_desc;
         $post->desc = $request->desc;
         $post->category_id = $request->category_id;
+        $post->post_date = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
         if($request->image){
             $image = $request->image;
             $ext = $image->getClientOriginalExtension();
             $name = time().'_'.$image->getClientOriginalName();
             Storage::disk('public')->put($name, File::get($image));
             $post->image = $name;
-        }else{
-            $post->image = 'default.jpg';
         }
+        // else{
+        //     $post->image = 'default.jpg';
+        // }
         $post->save();
 
         return redirect()->route('post.index')->with('msg', 'Thêm bài viết thành công');
@@ -84,6 +87,7 @@ class PostController extends Controller
         $post->short_desc = $request->short_desc;
         $post->desc = $request->desc;
         $post->category_id = $request->category_id;
+        $post->post_date = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
         if($request->image){
             unlink('uploads/'.$post->image);
             $image = $request->image;

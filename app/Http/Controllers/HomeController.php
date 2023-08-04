@@ -11,6 +11,19 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function search(){
+        $keywords = $_GET['keywords'];
+        $posts = Post::with('category')
+            ->where('title','LIKE','%'.$keywords.'%')
+            ->orWhere('short_desc','LIKE','%'.$keywords.'%')
+            ->orWhere('desc','LIKE','%'.$keywords.'%')
+            ->get();
+
+        $categories = Category::all();
+
+        return view('pages.search', compact('categories', 'posts', 'keywords'));
+    }
+
     public function index()
     {
         $posts = Post::with('category')->get();

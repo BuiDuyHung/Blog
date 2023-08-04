@@ -12,14 +12,14 @@
                     <div class="a-1">
                         @foreach ($posts as $post)
                             <div class="row mt-4 mb-4">
+                                <a href="{{ route('danh-muc.show', ['danh_muc' => $post->category->id, 'slug' => Str::slug($post->category->title)]) }}"><h6>{{ $post->category->title }}</h6></a>
                                 <div class="col-md-6 abt-left">
-                                    <a href="{{ route('bai-viet.show', ['bai_viet' => $post->id]) }}"><img width="100%" src="{{ asset('uploads/' . $post->image) }}" alt="{{ Str::slug($post->title) }}" /></a>
+                                    <img width="100%" src="{{ asset('uploads/' . $post->image) }}" alt="{{ Str::slug($post->title) }}" />
                                 </div>
                                 <div class="col-md-6 abt-left">
-                                    <h6>{{ $post->category->title }}</h6>
                                     <a href="{{ route('bai-viet.show', ['bai_viet' => $post->id]) }}"><h3>{{ $post->title }}</h3></a>
                                     <p>{!! $post->short_desc !!}</p>
-                                    <label>May 29, 2015</label>
+                                    <label>{{ $post->post_date }}</label>
                                     <a href="{{ route('bai-viet.show', ['bai_viet' => $post->id]) }}">Đọc tiếp...</a>
                                 </div>
                             </div>

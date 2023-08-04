@@ -56,13 +56,16 @@
 					</ul>
 			</div>
 			<div class="header-right">
-				<div class="search-bar">
-					<input type="text" value="" placeholder="Tìm kiếm">
-					<input type="submit" value="">
-				</div>
-				<ul>
+				<form action="{{url('search')}}" method="GET">
+					<div class="search-bar">
+						<input type="text" name="keywords">
+						<input type="submit" value="Tìm kiếm"  name="search">
+					</div>
+					@csrf
+				</form>
+				{{-- <ul>
 					<li><a href="#"><span class="fb"> </span></a></li>
-				</ul>
+				</ul> --}}
 			</div>
 				<div class="clearfix"></div>
 			</div>
