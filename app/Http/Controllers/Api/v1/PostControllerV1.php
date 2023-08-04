@@ -39,8 +39,14 @@ class PostControllerV1 extends Controller
     public function show($id)
     {
         $post = Post::with('category')->where('id', $id)->first();
+
+        $category_id = $post->category_id;
+            
+        $post_related = Post::with('category')->where('category_id', $category_id)->whereNotIn('id', [$id])->inRandomOrder()->limit(5)->get();;
+
         $categories = Category::all();
-        return view('pages.detail', compact('categories', 'post'));
+
+        return view('pages.detail', compact('categories', 'post', 'post_related'));
     }
 
     /**
