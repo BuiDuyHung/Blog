@@ -13,8 +13,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $posts = Post::with('category')->get();
+        $news = Post::inRandomOrder()->limit(5)->get();
+        $views = Post::orderBy('views', 'DESC')->limit(5)->get();
         $categories = Category::all();
-        return view('pages.main', compact('categories'));
+        return view('pages.main', compact('categories', 'posts', 'news', 'views'));
     }
 
     /**

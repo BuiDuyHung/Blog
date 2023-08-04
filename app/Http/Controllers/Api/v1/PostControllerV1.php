@@ -36,10 +36,11 @@ class PostControllerV1 extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
+        $post = Post::with('category')->where('id', $id)->first();
         $categories = Category::all();
-        return view('pages.detail', compact('categories'));
+        return view('pages.detail', compact('categories', 'post'));
     }
 
     /**

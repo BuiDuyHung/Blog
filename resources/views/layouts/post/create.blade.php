@@ -24,6 +24,11 @@
                             </div>
 
                             <div class="mb-3">
+                                <label for="views">Lượt view :</label>
+                                <input type="text" class="form-control " name="views">
+                            </div>
+
+                            <div class="mb-3">
                                 <label for="image">Hình ảnh :</label>
                                 <input type="file" class="form-control " name="image">
                             </div>

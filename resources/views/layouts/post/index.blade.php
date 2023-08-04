@@ -22,6 +22,7 @@
                               <tr>
                                 <th scope="col">#</th>
                                 <th scope="col" class="text-center">Tiêu đề</th>
+                                <th scope="col" class="text-center">Lượt xem</th>
                                 <th scope="col" class="text-center">Hình ảnh</th>
                                 <th scope="col" class="text-center">Mô tả ngắn</th>
                                 <th scope="col" class="text-center">Danh mục</th>
@@ -36,6 +37,7 @@
                                     <tr>
                                         <th scope="row" class="text-center"> {{$item->id}} </th>
                                         <td class="text-center"> {{$item->title}} </td>
+                                        <td class="text-center"> {{$item->views}} </td>
                                         <td class="text-center"> 
                                             <img src=" {{asset('uploads/'.$item->image)}} " alt="{{ $item->title }}" width="200px">
                                         </td>

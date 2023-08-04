@@ -36,6 +36,7 @@ class PostController extends Controller
     {
         $post = new Post();
         $post->title = $request->title;
+        $post->views = $request->views;
         $post->short_desc = $request->short_desc;
         $post->desc = $request->desc;
         $post->category_id = $request->category_id;
@@ -79,6 +80,7 @@ class PostController extends Controller
     {
         $post = Post::find($postId);
         $post->title = $request->title;
+        $post->views = $request->views;
         $post->short_desc = $request->short_desc;
         $post->desc = $request->desc;
         $post->category_id = $request->category_id;

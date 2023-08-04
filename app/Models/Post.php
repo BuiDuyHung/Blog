@@ -14,6 +14,7 @@ class Post extends Model
 
     protected $fillable = [
         'title',
+        'views',
         'short_desc',
         'desc',
         'image',
