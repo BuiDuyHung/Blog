@@ -22,6 +22,7 @@
                               <tr>
                                 <th scope="col" class="text-center">#</th>
                                 <th scope="col" class="text-center">Tiêu đề</th>
+                                <th scope="col" class="text-center">Mô tả</th>
                                 <th scope="col" class="text-center">Sửa</th>
                                 <th scope="col" class="text-center">Xóa</th>
                                 
@@ -33,6 +34,7 @@
                                     <tr>
                                         <td scope="row" class="text-center"> {{$item->id}} </td>
                                         <td class="text-center"> {{$item->title}} </td>
+                                        <td class="text-center"> {{$item->short_desc}} </td>
                                         <td class="text-center">
                                             <a href="{{route('category.edit', $item->id)}}" class="btn btn-warning btn-sm">Sửa</a>
                                         </td>

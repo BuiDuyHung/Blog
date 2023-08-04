@@ -34,6 +34,7 @@ class CategoryController extends Controller
     {
         $category = new Category();
         $category->title = $request->title;
+        $category->short_desc = $request->short_desc;
         $category->save();
 
         return redirect()->route('category.index')->with('msg', 'Thêm danh mục bài viết thành công');
@@ -65,6 +66,7 @@ class CategoryController extends Controller
         $foundCategory = Category::find($category->id);
         if ($foundCategory) {
             $foundCategory->title = $request->title;
+            $foundCategory->short_desc = $request->short_desc;
             $foundCategory->update();
         }
 

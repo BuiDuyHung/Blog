@@ -40,7 +40,11 @@ class CategoryControllerV1 extends Controller
     {   
         $posts = Post::with('category')->where('category_id', $id)->get();
         $categories = Category::all();
-        return view('pages.category', compact('categories', 'posts'));
+        $title_category = Category::find($id);
+        $views_category = Post::with('category')->orderBy('views', 'DESC')->where('category_id', $id)->limit(5)->get();
+        $category_recomment = Category::whereNotIn('id',[$id])->get();
+
+        return view('pages.category', compact('categories', 'posts', 'title_category', 'views_category', 'category_recomment'));
     }
 
     /**

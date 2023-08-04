@@ -20,6 +20,11 @@
                         <div class="form-group">
                             <label for="title">Tiêu đề</label>
                             <input type="text" class="form-control " name="title" value="{{$category->title}}"/>
+
+                            <div class="mb-3">
+                                <label for="title">Mô tả danh mục :</label>
+                                <textarea name="short_desc" class="form-control ckeditor">{{$category->short_desc}}</textarea>
+                            </div>
                             
                         </div>
 
