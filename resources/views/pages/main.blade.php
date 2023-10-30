@@ -30,12 +30,12 @@
                     <div class="mt-3">
                         {{ $posts->links() }}
                     </div>
-                </div>	
+                </div>
             </div>
-            
+
 
             <div class="col-md-4 about-right heading">
-                
+
                 <div class="abt-2">
                     <h3>Bài viết mới nhất</h3>
                     @foreach ($news as $new)
@@ -45,12 +45,12 @@
                             </div>
                             <div class="might-top">
                                 <h4><a href="{{ route('bai-viet.show', ['bai_viet' => $new->id]) }}">{{ $new->title }}</a></h4>
-                                <p>{!! substr($new->short_desc,0,50) !!}...</p> 
+                                <p>{!! substr($new->short_desc,0,50) !!}...</p>
                                 <a href="{{ route('bai-viet.show', ['bai_viet' => $new->id]) }}">Đọc tiếp...</a>
                             </div>
-                            
+
                             <div class="clearfix"></div>
-                        </div>	
+                        </div>
                     @endforeach
                 </div>
 
@@ -60,7 +60,7 @@
                         @foreach ($views as $view)
                             <li><a href="{{ route('bai-viet.show', ['bai_viet' => $view->id]) }}"> {{$view->title}} </a></li>
                         @endforeach
-                    </ul>	
+                    </ul>
                 </div>
                 <div class="abt-2">
                     <h3>Gửi Thư</h3>
@@ -72,8 +72,8 @@
                     </div>
                 </div>
             </div>
-            <div class="clearfix"></div>			
-        </div>		
+            <div class="clearfix"></div>
+        </div>
     </div>
 </div>
 @endsection

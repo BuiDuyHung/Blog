@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Pagination\Paginator;
 
 class PostController extends Controller
-{   
+{
     /**
      * Display a listing of the resource.
      */
@@ -44,6 +44,7 @@ class PostController extends Controller
         $post->desc = $request->desc;
         $post->category_id = $request->category_id;
         $post->post_date = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
+
         if($request->image){
             $image = $request->image;
             $ext = $image->getClientOriginalExtension();
@@ -90,6 +91,7 @@ class PostController extends Controller
         $post->desc = $request->desc;
         $post->category_id = $request->category_id;
         $post->post_date = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
+
         if($request->image){
             unlink('uploads/'.$post->image);
             $image = $request->image;
@@ -107,12 +109,12 @@ class PostController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy($postId)
-    {   
+    {
         $path = 'uploads/';
         $post = Post::find($postId);
         unlink($path.$post->image);
         $post->delete();
-        
+
         return redirect()->back()->with('msg', 'Xóa bài viết thành công');
     }
 }

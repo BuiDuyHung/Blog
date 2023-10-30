@@ -51,10 +51,10 @@
                                     @foreach ($categories as $key => $item)
                                         <option {{ $item->id == $post->category_id ? 'selected':'' }} value="{{$item->id}}" > {{$item->title}} </option>
                                     @endforeach
-                                    
+
                                 </select>
                             </div>
-                            
+
 
                         </div>
 
@@ -63,7 +63,7 @@
                         @csrf
                         @method('PUT')
                     </form>
-                    
+
                 </div>
             </div>
         </div>

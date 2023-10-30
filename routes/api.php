@@ -30,7 +30,7 @@ Route::prefix('v1')->group(function(){
     Route::resource('customer', CustomerController::class)->only(['index', 'show', 'store', 'update', 'delete']);
 
     Route::resource('category', CategoryController::class);
-    
+
     Route::resource('post', PostController::class);
 
     Route::resource('bai-viet', PostControllerV1::class);
